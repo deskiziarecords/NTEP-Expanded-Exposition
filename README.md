@@ -6,7 +6,7 @@ DOI: <https://doi.org/10.5281/zenodo.18398188>
 
 NTEP: Neural Tool Embeddings Protocol
 
-PythonLicense: MIT
+
 
 What if your AI agent tried to email a file before encrypting it? NTEP builds a mathematical guarantee to prevent that.
 
