@@ -1,0 +1,23 @@
+# Python / OS generated files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+.conda/
+.ipynb_checkpoints
+
+# Data / model checkpoints
+data/*.pt
+data/*.ckpt
+
+# Virtual env / IDE
+.vscode/
+.idea/
+
+# Logs & caches
+*.log
+*.cache
