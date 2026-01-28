@@ -1,0 +1,124 @@
+Metadata-Version: 2.4
+Name: ntep
+Version: 0.1.0
+Summary: Neuro‑symbolic Tool Composition via Spherical Embeddings
+Author-email: "J. Roberto Jiménez " <tijuanapaint@gmail.com>
+Project-URL: Homepage, https://github.com/deskiziarecords/NTEP-Expanded-Exposition
+Project-URL: Bug Tracker, https://github.com/deskiziarecords/NTEP-Expanded-Exposition/issues
+Keywords: artificial-intelligence,machine-learning,neuro-symbolic,tool-use,tool-chaining,embeddings,ai-safety,formal-methods,agents,correctness,geometry,representation-learning
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: numpy
+Requires-Dist: scipy
+Requires-Dist: torch
+Requires-Dist: sentence-transformers
+Requires-Dist: tqdm
+Provides-Extra: dev
+Requires-Dist: pytest; extra == "dev"
+Requires-Dist: sphinx; extra == "dev"
+Requires-Dist: sphinx-rtd-theme; extra == "dev"
+Dynamic: license-file
+
+# NTEP – Expanded Exposition
+
+**Neuro‑symbolic Tool Composition via Spherical Embeddings**  
+Author: J. Roberto Jiménez ✉️ `tijuanapaint@gmail.com`  
+DOI: <https://doi.org/10.5281/zenodo.18398188>  
+
+NTEP: Neural Tool Embeddings Protocol
+
+
+
+What if your AI agent tried to email a file before encrypting it? NTEP builds a mathematical guarantee to prevent that.
+
+As AI agents take on more complex tasks, tool chaining becomes critical. But how do you ensure an AI doesn't execute a sequence of tools in a disastrously wrong order? Traditional methods rely on post-hoc checks, which can fail.
+
+NTEP (Neural Tool Embeddings Protocol) is a framework that builds safety directly into the AI's "thinking." It embeds tools in a vector space where their geometric relationships encode their operational dependencies.
+
+## 🔑 Key Features
+
+    - Soundness-by-Construction: Any valid chain decoded from the embeddings is automatically correct. No more guessing.
+    - Monotonicity Guarantee: Our central theorem proves the AI is always geometrically "nudged" toward the correct next step.
+    - Risk Awareness: A quantum-inspired "consciousness" measure quantifies uncertainty and flags risky chains before execution.
+    - Built for Scale: Proven generalization bounds and efficient retrieval make it viable for enterprise applications.
+
+## 🚀 Quick Start
+
+pip install ntep
+
+``` python
+from ntep import NTEPDecoder, Tool, DependencyGraph
+
+# 1. Define your tools and their dependencies
+tools = [
+    Tool(id="resize", name="Resize Image"),
+    Tool(id="encrypt", name="Encrypt File"),
+    Tool(id="package", name="Package for Delivery"),
+    Tool(id="email", name="Send via Email")
+]
+dependencies = {
+    "resize": ["package"],
+    "encrypt": ["package"],
+    "package": ["email"]
+}
+dep_graph = DependencyGraph(dependencies)
+
+# 2. Load a pre-trained decoder (or train your own)
+# This loads the tool embeddings and dependency graph
+decoder = NTEPDecoder.from_pretrained("ntep/base-document-pipeline")
+
+# 3. Decode a valid chain from a prompt
+prompt_embedding = decoder.encode_prompt("prepare the confidential image for delivery")
+chain = decoder.decode(prompt_embedding)
+
+print(f"Valid tool chain: {' -> '.join(chain)}")
+# > Valid tool chain: resize -> encrypt -> package -> email
+
+```
+
+---
+📖 Documentation
+
+The core technical narrative lives in docs/axioms.pdf. It expands on:
+
+    Symbolic definitions (𝒯, ℰ, ≤, γ, δ…)
+    Category‑theoretic construction (𝒫, metric enrichment, embedding functor)
+    Monotonicity Theorem with full proof sketch
+    Consciousness measure built from density‑matrix entropy
+    Generalization bounds, geometric properties, and generalization guarantees
+
+### Contributing
+
+Feel free to open issues or pull requests if you spot a typo, need a
+visualisation, or want to extend the framework (e.g., stochastic composition,
+higher‑order interactions).
+
+---
+
+### 📜 Citation
+
+If you use NTEP in research, please cite the Zenodo record:
+
+``` bibitex
+@misc{jimenez2023ntep,
+  author       = {Jiménez, J. Roberto},
+  title        = {{NTEP}: Expanded Exposition},
+  year         = {2026},
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.18398188},
+  url          = {https://doi.org/10.5281/zenodo.18398188}
+}
+```
+📧 Contact
+
+For questions or collaboration proposals, reach out to J. Roberto Jiménez
+at tijuanapaint@gmail.com.
+
+-----
+ If you would like to support the development of these resources, consider contributing towards helping me get some gear for continued improvement or simply treating me to a coffee. Your support means a lot!" 
+ [buy me a coffee](buymeacoffee.com/hipotermiah)
+ 
