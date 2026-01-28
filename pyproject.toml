@@ -25,6 +25,20 @@ dependencies = [
     "tqdm",
 ]
 
+keywords = [
+    "artificial-intelligence",
+    "machine-learning",
+    "neuro-symbolic",
+    "tool-use",
+    "tool-chaining",
+    "embeddings",
+    "ai-safety",
+    "formal-methods",
+    "agents",
+    "correctness",
+    "geometry",
+    "representation-learning"
+]
 [project.optional-dependencies]
 dev = [
     "pytest",
@@ -33,5 +47,6 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/deskiziarecords/ntep-expanded-exposition"
-"Bug Tracker" = "https://github.com/deskiziarecords/ntep-expanded-exposition/issues"
+Homepage = "https://github.com/deskiziarecords/NTEP-Expanded-Exposition"
+"Bug Tracker" = "https://github.com/deskiziarecords/NTEP-Expanded-Exposition/issues"
+
