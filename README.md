@@ -4,45 +4,57 @@
 Author: J. Roberto Jiménez ✉️ `tijuanapaint@gmail.com`  
 DOI: <https://doi.org/10.5281/zenodo.18398188>  
 
-This repository contains the **full technical description**, **pre‑trained
-embeddings**, and **minimal PyTorch scripts** to reproduce the NTEP framework
-presented in the Zenodo article.
+NTEP: Neural Tool Embeddings Protocol
 
----
+PythonLicense: MIT
 
-## 📚 Repository Overview
+What if your AI agent tried to email a file before encrypting it? NTEP builds a mathematical guarantee to prevent that.
 
-| Path                     | Description |
-|--------------------------|-------------|
-| `docs/axioms.pdf`       | Printable version of the *Axiomatic Foundation* section. |
-| `scripts/train.py`       | Train spherical embeddings with the contrastive loss (see **A1**). |
-| `scripts/infer.py`       | Decode a valid tool chain from a prompt embedding. |
-| `data/embeddings.pt`     | Saved embedding matrix after training (`torch.save`). |
-| `requirements.txt`       | Python dependencies. |
+As AI agents take on more complex tasks, tool chaining becomes critical. But how do you ensure an AI doesn't execute a sequence of tools in a disastrously wrong order? Traditional methods rely on post-hoc checks, which can fail.
 
----
+NTEP (Neural Tool Embeddings Protocol) is a framework that builds safety directly into the AI's "thinking." It embeds tools in a vector space where their geometric relationships encode their operational dependencies.
 
-## 🚀 Quick‑Start
+## 🔑 Key Features
 
-```bash
-# 1️⃣ Clone the repo
-git clone https://github.com/dezkiziarecords/ntep-expanded-exposition.git
-cd ntep-expanded-exposition
+    - Soundness-by-Construction: Any valid chain decoded from the embeddings is automatically correct. No more guessing.
+    - Monotonicity Guarantee: Our central theorem proves the AI is always geometrically "nudged" toward the correct next step.
+    - Risk Awareness: A quantum-inspired "consciousness" measure quantifies uncertainty and flags risky chains before execution.
+    - Built for Scale: Proven generalization bounds and efficient retrieval make it viable for enterprise applications.
 
-# 2️⃣ Create a virtual environment (optional but recommended)
-python -m venv .venv
-source .venv/bin/activate   # on Windows: .venv\Scripts\activate
+## 🚀 Quick Start
 
-# 3️⃣ Install dependencies
-pip install -r requirements.txt
+pip install ntep
 
-# 4️⃣ Train embeddings on the toy dataset
-python scripts/train.py --epochs 10 --batch_size 64
+``` python
+from ntep import NTEPDecoder, Tool, DependencyGraph
 
-# 5️⃣ Run inference on a synthetic pipeline
-python scripts/infer.py --prompt "process document" --chain "resize package email"
+# 1. Define your tools and their dependencies
+tools = [
+    Tool(id="resize", name="Resize Image"),
+    Tool(id="encrypt", name="Encrypt File"),
+    Tool(id="package", name="Package for Delivery"),
+    Tool(id="email", name="Send via Email")
+]
+dependencies = {
+    "resize": ["package"],
+    "encrypt": ["package"],
+    "package": ["email"]
+}
+dep_graph = DependencyGraph(dependencies)
+
+# 2. Load a pre-trained decoder (or train your own)
+# This loads the tool embeddings and dependency graph
+decoder = NTEPDecoder.from_pretrained("ntep/base-document-pipeline")
+
+# 3. Decode a valid chain from a prompt
+prompt_embedding = decoder.encode_prompt("prepare the confidential image for delivery")
+chain = decoder.decode(prompt_embedding)
+
+print(f"Valid tool chain: {' -> '.join(chain)}")
+# > Valid tool chain: resize -> encrypt -> package -> email
 
 ```
+
 ---
 📖 Documentation
 
