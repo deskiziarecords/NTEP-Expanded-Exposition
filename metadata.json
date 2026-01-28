@@ -1,0 +1,41 @@
+{
+  "title": "NTEP – Expanded Exposition",
+  "authors": [
+    {
+      "name": "J. Roberto Jiménez",
+      "affiliations": [
+        {
+          "name": "Independent Researcher"
+        }
+      ],
+      "emails": ["tijuanapaint@gmail.com"]
+    }
+  ],
+  "upload_type": "software",
+  "keywords": [
+    "neuro-symbolic",
+    "tool composition",
+    "spherical embeddings",
+    "poset category",
+    "zenodo"
+  ],
+  "description": "Full technical description, code, and pre‑trained embeddings for the NTEP framework (Neuro‑symbolic Tool Composition via Spherical Embeddings).",
+  "creators": [
+    {
+      "name": "J. Roberto Jiménez",
+      "affiliation": "Independent Researcher",
+      "email": "tijuanapaint@gmail.com"
+    }
+  ],
+  "funding": [],
+  "resource_type": "software",
+  "version": "1.0",
+  "access_right": "open",
+  "license": "Apache 2.0",
+  "url": "https://github.com/deskiziarecords/NTEP-Expanded-Exposition",
+  "additional_communication_author": [
+    {
+      "name_email": "tijuanapaint@gmail.com"
+    }
+  ]
+}
